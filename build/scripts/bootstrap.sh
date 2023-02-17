@@ -39,7 +39,7 @@ function parseArgs {
             ;;
         --platform | -p)
             PLATFORM="${2,,}"
-            if [[ "$PLATFORM" == "debian10" || "$PLATFORM" == "ubuntu1804" || "$PLATFORM" == "ubuntu2004" || "$PLATFORM" == "osx" ]];
+            if [[ "$PLATFORM" == "debian10" || "$PLATFORM" == "debian11" || "$PLATFORM" == "ubuntu1804" || "$PLATFORM" == "ubuntu2004" || "$PLATFORM" == "osx" ]];
             then
                 echo -e "[INFO] Platform set to: ${PLATFORM}"
             else
@@ -94,7 +94,7 @@ function installBuildDependencies
         mkdir /tmp/gtest
         pushd /tmp/gtest
 
-        if [[ "$PLATFORM" == "ubuntu2004" || "$PLATFORM" == "debian10" ]];
+        if [[ "$PLATFORM" == "ubuntu2004" || "$PLATFORM" == "debian10" || "$PLATFORM" == "debian11" ]];
         then
             # The latest native-version of gtest on ubuntu2004 and debian10 currently has a bug where
             # CMakeLists doesn't declare an install target, causing 'make install' to fail.
@@ -187,7 +187,7 @@ function installAll
 
 function isSupportedLinux()
 {
-    if [[ "$PLATFORM" == "debian10" || "$PLATFORM" == "ubuntu1804" || "$PLATFORM" == "ubuntu2004" ]];
+    if [[ "$PLATFORM" == "debian10" || "$PLATFORM" == "debian11" || "$PLATFORM" == "ubuntu1804" || "$PLATFORM" == "ubuntu2004" ]];
     then
         return 0
     else
