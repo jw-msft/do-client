@@ -7,6 +7,8 @@ if (DO_PLATFORM_LINUX OR DO_PLATFORM_MAC)
     message("DO configured to use shared Boost libraries")
     add_definitions(-DBOOST_ALL_DYN_LINK=1)
 
+    add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
+
     # Include external libraries here
     find_package(Boost COMPONENTS filesystem REQUIRED)
 endif()
